@@ -1,0 +1,48 @@
+function models = execute1(k)
+    
+    models = cell(1, 10);
+    next = 1;
+    for sample = [26:35]
+        fName = strcat('feat_matrix_', sprintf('%03d',sample));
+        fPath = strcat('C:\Users\k.shyamal\Documents\4th Year\AI\train_features\', fName, '.mat');
+        X = load(fPath);
+        W = X.(fName);
+        W(isinf(W)) = NaN;
+        models{next} = gmmTrain(W, k);
+        next = next + 1;
+        disp(sample);
+    end
+    
+    S.models = models;
+    save('C:\Users\k.shyamal\Documents\4th Year\AI\models.mat', '-struct', 'S')
+    clear('S');
+    
+
+    %models = load('C:\Users\k.shyamal\Documents\4th Year\AI\models.mat');
+    %models = models.models;
+    correct = 0;
+    next = 1;
+    for sample = [26:35]
+        fName = strcat('feat_matrix_', sprintf('%03d',sample));
+        fPath = strcat('C:\Users\k.shyamal\Documents\4th Year\AI\test_features\', fName, '.mat');
+        X = load(fPath);
+        W = X.(fName);
+        W(isinf(W)) = NaN;
+        posteriors = gmmTest(models, W)
+        
+        %{
+        label = mode(classes);
+        fprintf('%d %d\n', next, label);
+        if label == next
+            correct = correct + 1;
+        end
+        
+        %}
+        [ign, label] = max(posteriors);
+        if label == 
+        end
+        next = next + 1;
+    end
+    accuracy = correct/10;
+    fprintf('The accuracy is: %f\n', accuracy);
+end
