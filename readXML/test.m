@@ -1,7 +1,7 @@
 function allWriters = test(p1)
 
     allWriters = containers.Map('KeyType','char','ValueType','int32');
-    %p1 = '/home/shyamal/Desktop/kkb/data/original/';
+    %p1 = '/home/va/Writer-Identification-System/data/original/';
     l1Dir = dir(p1);
     for k1=3:length(l1Dir)
         p2 = strcat(p1, l1Dir(k1).name,'/');

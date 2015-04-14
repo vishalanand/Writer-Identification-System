@@ -4,7 +4,7 @@ function models = execute1(k)
     next = 1;
     for sample = [26:35]
         fName = strcat('feat_matrix_', sprintf('%03d',sample));
-        fPath = strcat('C:\Users\k.shyamal\Documents\4th Year\AI\train_features\', fName, '.mat');
+        fPath = strcat('/home/va/Writer-Identification-System/trainFeatures/', fName, '.mat');
         X = load(fPath);
         W = X.(fName);
         W(isinf(W)) = NaN;
@@ -14,17 +14,17 @@ function models = execute1(k)
     end
     
     S.models = models;
-    save('C:\Users\k.shyamal\Documents\4th Year\AI\models.mat', '-struct', 'S')
+    save('Location to save models.mat', '-struct', 'S')
     clear('S');
     
 
-    %models = load('C:\Users\k.shyamal\Documents\4th Year\AI\models.mat');
+    %models = load('Location of models.mat');
     %models = models.models;
     correct = 0;
     next = 1;
     for sample = [26:35]
         fName = strcat('feat_matrix_', sprintf('%03d',sample));
-        fPath = strcat('C:\Users\k.shyamal\Documents\4th Year\AI\test_features\', fName, '.mat');
+        fPath = strcat('/home/va/Writer-Identification-System/testFeatures/', fName, '.mat');
         X = load(fPath);
         W = X.(fName);
         W(isinf(W)) = NaN;

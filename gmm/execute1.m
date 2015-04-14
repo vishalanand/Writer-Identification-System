@@ -31,7 +31,7 @@ function [models, discarded] = execute1(k, s, e, p1)
     clear('S2');
     
     %{
-    %models = load('C:\Users\k.shyamal\Documents\4th Year\AI\models.mat');
+    %models = load('<Models.mat location');
     %models = models.models;
     correct = zeros(1, n);
     next = 1;
